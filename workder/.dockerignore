@@ -1,0 +1,6 @@
+.editorconfig
+.prettierrc.js
+.idea
+.vscode
+
+node_modules
