@@ -4,18 +4,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t finir/client-test -f ./client/Dockerfile.dev ./client
+  - docker build -t dltruongc/client-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true finir/client-test npm run test -- --coverage
+  - docker run -e CI=true dltruongc/client-test npm run test -- --coverage
 
 after_success:
-  - docker build -t finir/multi-client -f ./client/Dockerfile ./client
-  - docker build -t finir/multi-nginx -f ./nginx/Dockerfile ./nginx
-  - docker build -t finir/multi-server -f ./server/Dockerfile ./server
-  - docker build -t finir/multi-worker -f ./worker/Dockerfile ./worker
+  - docker build -t dltruongc/multi-client -f ./client/Dockerfile ./client
+  - docker build -t dltruongc/multi-nginx -f ./nginx/Dockerfile ./nginx
+  - docker build -t dltruongc/multi-server -f ./server/Dockerfile ./server
+  - docker build -t dltruongc/multi-worker -f ./worker/Dockerfile ./worker
   - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin
-  - docker push finir/multi-client
-  - docker push finir/multi-nginx
-  - docker push finir/multi-server
-  - docker push finir/multi-worker
+  - docker push dltruongc/multi-client
+  - docker push dltruongc/multi-nginx
+  - docker push dltruongc/multi-server
+  - docker push dltruongc/multi-worker
