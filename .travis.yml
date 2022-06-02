@@ -14,7 +14,7 @@ after_success:
   - docker build -t finir/multi-nginx -f ./nginx/Dockerfile ./nginx
   - docker build -t finir/multi-server -f ./server/Dockerfile ./server
   - docker build -t finir/multi-worker -f ./worker/Dockerfile ./worker
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin
   - docker push finir/multi-client
   - docker push finir/multi-nginx
   - docker push finir/multi-server

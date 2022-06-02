@@ -3,7 +3,7 @@ WORKDIR /app
 COPY ./package.json ./
 RUN npm install --production
 COPY ./ ./
-RUN num run build
+RUN npm run build
 
 
 FROM nginx:1.21-alpine
